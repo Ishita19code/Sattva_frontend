@@ -14,11 +14,13 @@ import Grow from "@material-ui/core/Grow";
 import Hidden from "@material-ui/core/Hidden";
 import Popper from "@material-ui/core/Popper";
 import Divider from "@material-ui/core/Divider";
+import Tooltip from "@material-ui/core/Tooltip";
 
 // @material-ui/icons
 import Person from "@material-ui/icons/Person";
 import Notifications from "@material-ui/icons/Notifications";
 import Dashboard from "@material-ui/icons/Dashboard";
+// import WebIcon from "@mui/icons-material/Web";
 // import Search from "@material-ui/icons/Search";
 
 // core components
@@ -62,7 +64,7 @@ export default function HeaderLinks(props) {
   //   classNames({
   //     [classes.searchRTL]: rtlActive,
   //   });
-  const dropdownItem = classNames(classes.dropdownItem, classes.primaryHover, {
+  const dropdownItem = classNames(classes.dropdownItem, classes.infoHover, {
     [classes.dropdownItemRTL]: rtlActive,
   });
   const wrapper = classNames({
@@ -71,9 +73,9 @@ export default function HeaderLinks(props) {
   const managerClasses = classNames({
     [classes.managerClasses]: true,
   });
-  const OpenDashboard = () => {
-    <a href="http://localhost:3000/admin/dashboard" />;
-  };
+  // const OpenDashboard = () => {
+  //   return <a href="https://testnets.opensea.io/collection/sattvanft" />;
+  // };
   return (
     <div className={wrapper}>
       {/* <CustomInput
@@ -98,7 +100,7 @@ export default function HeaderLinks(props) {
       >
         <Search className={classes.headerLinksSvg + " " + classes.searchIcon} />
       </Button> */}
-      <Button
+      {/* <Button
         color="transparent"
         simple
         aria-label="Dashboard"
@@ -109,7 +111,7 @@ export default function HeaderLinks(props) {
           label: rtlActive ? classes.labelRTL : "",
         }}
       >
-        <Dashboard
+        <WebIcon
           className={
             classes.headerLinksSvg +
             " " +
@@ -121,7 +123,24 @@ export default function HeaderLinks(props) {
             {rtlActive ? "لوحة القيادة" : "Dashboard"}
           </span>
         </Hidden>
-      </Button>
+      </Button> */}
+      <Tooltip
+        id="tooltip-top"
+        title="Visit OpenSea"
+        placement="bottom"
+        classes={{ tooltip: classes.tooltip }}
+      >
+        <Button
+          color="transparent"
+          simple
+          justIcon
+          onClick={() =>
+            window.open("https://testnets.opensea.io/collection/sattvanft")
+          }
+        >
+          <Dashboard className={classes.underChartIcons} />
+        </Button>
+      </Tooltip>
       <div className={managerClasses}>
         <Button
           color="transparent"
