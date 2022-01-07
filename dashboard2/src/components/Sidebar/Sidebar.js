@@ -6,6 +6,8 @@ import PerfectScrollbar from "perfect-scrollbar";
 import { NavLink, useLocation } from "react-router-dom";
 import cx from "classnames";
 
+//For the sidebar shown 
+
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -342,7 +344,7 @@ function Sidebar(props) {
             onClick={() => setOpenAvatar(!openAvatar)}
           >
             <ListItemText
-              primary={rtlActive ? "تانيا أندرو" : "User Name with pic"}
+              primary={rtlActive ? "تانيا أندرو" : "Guest Login"}
               secondary={
                 <b
                   className={
@@ -451,20 +453,12 @@ function Sidebar(props) {
     });
   var brand = (
     <div className={logoClasses}>
-      <a
-        href="https://testnets.opensea.io/collection/sattvanft"
-        target="_blank"
-        className={logoMini}
-      >
+      <div className={logoMini}>
         <img src={logo} alt="logo" className={classes.img} />
-      </a>
-      <a
-        href="https://testnets.opensea.io/collection/sattvanft"
-        target="_blank"
-        className={logoNormal}
-      >
+      </div>
+      <div className={logoNormal}>
         {logoText}
-      </a>
+      </div>
     </div>
   );
   const drawerPaper =

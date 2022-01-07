@@ -13,10 +13,8 @@ const cardBodyStyle = {
   cardBodyBackground: {
     position: "relative",
     zIndex: "2",
-    minHeight: "280px",
     paddingTop: "40px",
     paddingBottom: "40px",
-    maxWidth: "440px",
     margin: "0 auto",
   },
   cardBodyPlain: {

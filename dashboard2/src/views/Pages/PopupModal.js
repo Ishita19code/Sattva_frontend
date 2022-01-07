@@ -60,14 +60,14 @@ const useStyles = makeStyles((theme) => ({
     width: "30%",
     position: "absolute",
     top: 290,
-    left: 60
+    left: 90
   },
   cancel:{
     position: "absolute",
     top: 290,
     left: 208,
     width: "30%",
-    marginLeft: "26px"
+    marginLeft: "20px"
   }
 }));
 
@@ -80,7 +80,6 @@ export default function PopupModal({open, setOpen, image ,userName, tweetId, cre
     if (reason === 'clickaway') {
       return;
     }
-
     setCreateAlert(false);
   };
 
@@ -88,7 +87,6 @@ export default function PopupModal({open, setOpen, image ,userName, tweetId, cre
     if (reason === 'clickaway') {
       return;
     }
-
     setDeleteAlert(false);
   };
 
@@ -119,7 +117,7 @@ export default function PopupModal({open, setOpen, image ,userName, tweetId, cre
                       setOpen(false),
                       setCreateAlert(true)}}
                   color="success"
-                  style={{width:"100%", marginLeft:30}}
+                  style={{width:"100px", marginLeft:30}}
                 >
                   Create Art
                 </Button>
@@ -128,7 +126,7 @@ export default function PopupModal({open, setOpen, image ,userName, tweetId, cre
                   onClick={() => {
                     setOpen(false),
                     setDeleteAlert(true)}}
-                    style={{width:"100%"}}
+                    style={{width:"100px"}}
                 >
                   Delete Image
                 </Button>

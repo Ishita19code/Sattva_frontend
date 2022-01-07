@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { NavLink } from "react-router-dom";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
@@ -9,9 +9,9 @@ import Switch from "@material-ui/core/Switch";
 
 import styles from "assets/jss/material-dashboard-pro-react/customCheckboxRadioSwitch.js";
 
-import imagine1 from "assets/img/sidebar-1.jpg";
-import imagine2 from "assets/img/sidebar-2.jpg";
-import imagine3 from "assets/img/sidebar-3.jpg";
+import imagine1 from "assets/sattvaimg/pattern.jpg";
+import imagine2 from "assets/img/sidebar-1.jpg";
+import imagine3 from "assets/img/sidebar-2.jpg";
 import imagine4 from "assets/img/sidebar-4.jpg";
 
 import Button from "components/CustomButtons/Button.js";
@@ -19,10 +19,10 @@ import Button from "components/CustomButtons/Button.js";
 const useStyles = makeStyles(styles);
 
 export default function FixedPlugin(props) {
-  const [classes, setClasses] = React.useState("dropdown show");
-  const [bg_checked, setBg_checked] = React.useState(true);
-  const [bgImage, setBgImage] = React.useState(props.bgImage);
-  const [showImage, setShowImage] = React.useState(true);
+  const [classes, setClasses] = useState("dropdown show");
+  const [bg_checked, setBg_checked] = useState(true);
+  const [bgImage, setBgImage] = useState(props.bgImage);
+  const [showImage, setShowImage] = useState(true);
   const handleClick = () => {
     props.handleFixedClick();
   };
@@ -50,7 +50,7 @@ export default function FixedPlugin(props) {
     >
       <div id="fixedPluginClasses" className={props.fixedClasses}>
         <div onClick={handleClick}>
-          <i className="fa fa-cog fa-2x" />
+          <i className="fas fa-bars fa-2x" style={{padding:"6px"}}/>
         </div>
         <ul className="dropdown-menu">
           <li className="header-title">SIDEBAR FILTERS</li>
@@ -263,18 +263,17 @@ export default function FixedPlugin(props) {
             </a>
           </li>
           <li className="button-container">
-            <div>
+            <div style={{marginBottom:"10px"}}>
               <Button
-                color="warning"
-                href="https://www.creative-tim.com/product/material-dashboard-pro-react?ref=mdpr-fixed-plugin"
+                color="rose"
+                href="https://testnets.opensea.io/collection/sattvanft"
                 target="_blank"
-                fullWidth
               >
-                Buy now
+                Visit SattvaNFT | OpenSea
               </Button>
             </div>
           </li>
-          <li className="button-container">
+          {/* <li className="button-container">
             <div>
               <Button
                 color="info"
@@ -289,7 +288,7 @@ export default function FixedPlugin(props) {
           <li className="header-title" id="sharrreTitle">
             Thank you for sharing!
             <br />
-          </li>
+          </li> */}
         </ul>
       </div>
     </div>
