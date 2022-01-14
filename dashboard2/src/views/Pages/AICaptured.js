@@ -16,6 +16,10 @@ import PopupModal from "./PopupModal";
 
 import Image1 from "assets/sattvaimg/1.png";
 import Image2 from "assets/sattvaimg/2.png";
+import Image3 from "assets/img/ex2.jpg";
+import Image4 from "assets/img/ex1.jpg";
+import Image5 from "assets/img/exwidth.jpg";
+import Image6 from "assets/img/sidebar-1.jpg";
 
 export default function TwitterImages() {
   const [ishover, setIsHover] = useState(false); 
@@ -33,11 +37,11 @@ export default function TwitterImages() {
           </span>
         }
       />
-            <div className="cardImage">
+          <div className="cardImage">
             <Card 
-            className="cardContent"
-            onMouseOver={() => setIsHover(true)}
-            onMouseLeave={() => setIsHover(false)}>  
+              className="cardContent"
+              onMouseOver={() => setIsHover(true)}
+              onMouseLeave={() => setIsHover(false)}>  
               <img src={Image1} alt="..." />
               {ishover && (
                 <Button 
@@ -47,15 +51,30 @@ export default function TwitterImages() {
                   View
                 </Button>
               )}  
-            <PopupModal open={open} setOpen={setOpen} image={Image1}/>
+              <PopupModal open={open} setOpen={setOpen} image={Image1}/>
+            </Card>
+            <Card 
+              className="cardContent"
+              onMouseOver={() => setIsHover(true)}
+              onMouseLeave={() => setIsHover(false)}>  
+              <img src={Image4} alt="..." />
+              {ishover && (
+                <Button 
+                  onClick={() => setOpen(true)}
+                  color="primary"
+                >
+                  View
+                </Button>
+              )}  
+              <PopupModal open={open} setOpen={setOpen} image={Image1}/>
             </Card>
             <Card>
-              <img src={Image2} alt="..." />
+              <img src={Image4} alt="..." />
             </Card>
             <Card>  
             <img src={Image1} alt="..."/>
             </Card>
-        </div>
+          </div>
     </div>
   );
 }
