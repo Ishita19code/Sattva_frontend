@@ -2,8 +2,8 @@
 import React from "react";
 
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-import Tooltip from "@material-ui/core/Tooltip";
+import { makeStyles, ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+// import Tooltip from "@material-ui/core/Tooltip";
 import Icon from "@material-ui/core/Icon";
 
 // @material-ui/icons
@@ -55,6 +55,33 @@ import styles from "assets/jss/material-dashboard-pro-react/views/dashboardStyle
 import stylesChart from "assets/jss/material-dashboard-pro-react/views/chartsStyle.js";
 import Timeline from "@material-ui/icons/Timeline";
 
+//for responsive charts
+import { 
+  ResponsiveContainer, 
+  LineChart, 
+  BarChart,
+  Bar,
+  Line, 
+  XAxis, 
+  YAxis, 
+  CartesianGrid, 
+  Legend, 
+  Label, 
+  Tooltip } 
+  from 'recharts';
+
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: [
+      'Roboto',
+      'serif',
+      'Neonderthaw',
+      'Dongle',
+      'Roboto Slab'
+    ].join(','),
+  },
+});
+
 //for most popular artwork
 import priceImage1 from "assets/sattvaimg/10.png";
 import priceImage2 from "assets/sattvaimg/11.png";
@@ -62,6 +89,103 @@ import priceImage3 from "assets/sattvaimg/9.png";
 
 const useStyles = makeStyles(styles);
 const useStylesCharts = makeStyles(stylesChart);
+
+//data for charts
+const lineData = [
+  {
+    name:'Jan',
+    UploadedImages: 1000,
+    CameraCaptured: 500,
+    TwitterMentions: 600
+  },
+  {
+    name:"Feb",
+    UploadedImages: 1200,
+    CameraCaptured: 300,
+    TwitterMentions: 900
+  },
+  {
+    name:"Mar",
+    UploadedImages: 500,
+    CameraCaptured: 200,
+    TwitterMentions: 700
+  },
+  {
+    name:"Apr",
+    UploadedImages: 1000,
+    CameraCaptured: 500,
+    TwitterMentions: 600
+  },
+  {
+    name:"May",
+    UploadedImages: 300,
+    CameraCaptured: 900,
+    TwitterMentions: 1600
+  },
+  {
+    name:"Jun",
+    UploadedImages: 100,
+    CameraCaptured: 400,
+    TwitterMentions: 900
+  },
+  {
+    name:"Jul",
+    UploadedImages: 1000,
+    CameraCaptured: 500,
+    TwitterMentions: 600
+  },
+  {
+    name:"Aug",
+    UploadedImages: 100,
+    CameraCaptured: 550,
+    TwitterMentions: 760
+  },
+  {
+    name:"Sep",
+    UploadedImages: 140,
+    CameraCaptured: 506,
+    TwitterMentions: 1260
+  },
+  {
+    name:"Oct",
+    UploadedImages: 1000,
+    CameraCaptured: 500,
+    TwitterMentions: 600
+  },
+  {
+    name:"Nov",
+    UploadedImages: 1070,
+    CameraCaptured: 550,
+    TwitterMentions: 1380
+  },
+  {
+    name:"Dec",
+    UploadedImages: 100,
+    CameraCaptured: 50,
+    TwitterMentions: 1930
+  }
+];
+
+const saleData = [
+  {
+    name:'Week 1',
+    RevenueGenerated: 1000,
+  },
+  {
+    name:'Week 2',
+    RevenueGenerated: 2000,
+  },
+  {
+    name:'Week 3',
+    RevenueGenerated: 1300,
+  },
+  {
+    name:'Week 4',
+    RevenueGenerated: 1200,
+  },
+];
+
+
 
 export default function Dashboard() {
   const classes = useStyles();
@@ -149,222 +273,8 @@ export default function Dashboard() {
           </Card>
         </GridItem>
       </GridContainer>
-      {/* <GridContainer>
-        <GridItem xs={12} sm={12} md={4}>
-          <Card chart className={classes.cardHover}>
-            <CardHeader color="info" className={classes.cardHeaderHover}>
-              <ChartistGraph
-                className="ct-chart-white-colors"
-                data={dailySalesChart.data}
-                type="Line"
-                options={dailySalesChart.options}
-                listener={dailySalesChart.animation}
-              />
-            </CardHeader>
-            <CardBody>
-              <div className={classes.cardHoverUnder}>
-                <Tooltip
-                  id="tooltip-top"
-                  title="Refresh"
-                  placement="bottom"
-                  classes={{ tooltip: classes.tooltip }}
-                >
-                  <Button simple color="info" justIcon>
-                    <Refresh className={classes.underChartIcons} />
-                  </Button>
-                </Tooltip>
-                <Tooltip
-                  id="tooltip-top"
-                  title="Change Date"
-                  placement="bottom"
-                  classes={{ tooltip: classes.tooltip }}
-                >
-                  <Button color="transparent" simple justIcon>
-                    <Edit className={classes.underChartIcons} />
-                  </Button>
-                </Tooltip>
-              </div>
-              <h4 className={classes.cardTitle}>Daily Sales</h4>
-              <p className={classes.cardCategory}>
-                <span className={classes.successText}>
-                  <ArrowUpward className={classes.upArrowCardCategory} /> 55%
-                </span>{" "}
-                increase in today sales.
-              </p>
-            </CardBody>
-            <CardFooter chart>
-              <div className={classes.stats}>
-                <AccessTime /> updated 4 minutes ago
-              </div>
-            </CardFooter>
-          </Card>
-        </GridItem>
-        <GridItem xs={12} sm={12} md={4}>
-          <Card chart className={classes.cardHover}>
-            <CardHeader color="warning" className={classes.cardHeaderHover}>
-              <ChartistGraph
-                className="ct-chart-white-colors"
-                data={emailsSubscriptionChart.data}
-                type="Bar"
-                options={emailsSubscriptionChart.options}
-                responsiveOptions={emailsSubscriptionChart.responsiveOptions}
-                listener={emailsSubscriptionChart.animation}
-              />
-            </CardHeader>
-            <CardBody>
-              <div className={classes.cardHoverUnder}>
-                <Tooltip
-                  id="tooltip-top"
-                  title="Refresh"
-                  placement="bottom"
-                  classes={{ tooltip: classes.tooltip }}
-                >
-                  <Button simple color="info" justIcon>
-                    <Refresh className={classes.underChartIcons} />
-                  </Button>
-                </Tooltip>
-                <Tooltip
-                  id="tooltip-top"
-                  title="Change Date"
-                  placement="bottom"
-                  classes={{ tooltip: classes.tooltip }}
-                >
-                  <Button color="transparent" simple justIcon>
-                    <Edit className={classes.underChartIcons} />
-                  </Button>
-                </Tooltip>
-              </div>
-              <h4 className={classes.cardTitle}>Email Subscriptions</h4>
-              <p className={classes.cardCategory}>Last Campaign Performance</p>
-            </CardBody>
-            <CardFooter chart>
-              <div className={classes.stats}>
-                <AccessTime /> campaign sent 2 days ago
-              </div>
-            </CardFooter>
-          </Card>
-        </GridItem>
-        <GridItem xs={12} sm={12} md={4}>
-          <Card chart className={classes.cardHover}>
-            <CardHeader color="danger" className={classes.cardHeaderHover}>
-              <ChartistGraph
-                className="ct-chart-white-colors"
-                data={completedTasksChart.data}
-                type="Line"
-                options={completedTasksChart.options}
-                listener={completedTasksChart.animation}
-              />
-            </CardHeader>
-            <CardBody>
-              <div className={classes.cardHoverUnder}>
-                <Tooltip
-                  id="tooltip-top"
-                  title="Refresh"
-                  placement="bottom"
-                  classes={{ tooltip: classes.tooltip }}
-                >
-                  <Button simple color="info" justIcon>
-                    <Refresh className={classes.underChartIcons} />
-                  </Button>
-                </Tooltip>
-                <Tooltip
-                  id="tooltip-top"
-                  title="Change Date"
-                  placement="bottom"
-                  classes={{ tooltip: classes.tooltip }}
-                >
-                  <Button color="transparent" simple justIcon>
-                    <Edit className={classes.underChartIcons} />
-                  </Button>
-                </Tooltip>
-              </div>
-              <h4 className={classes.cardTitle}>Completed Tasks</h4>
-              <p className={classes.cardCategory}>Last Campaign Performance</p>
-            </CardBody>
-            <CardFooter chart>
-              <div className={classes.stats}>
-                <AccessTime /> campaign sent 2 days ago
-              </div>
-            </CardFooter>
-          </Card>
-        </GridItem>
-      </GridContainer> */}
       <GridContainer>
-        {/* <GridItem xs={12} sm={12} md={4}>
-          <Card chart>
-            <CardHeader color="rose">
-              <ChartistGraph
-                className="ct-chart-white-colors"
-                data={roundedLineChart.data}
-                type="Line"
-                options={roundedLineChart.options}
-                listener={roundedLineChart.animation}
-              />
-            </CardHeader>
-            <CardBody>
-              <h4 className={classesCharts.cardTitle}>Rounded Line Chart</h4>
-              <p className={classesCharts.cardCategory}>Line Chart</p>
-            </CardBody>
-          </Card>
-        </GridItem> */}
-        <GridItem xs={12} sm={12} md={6}>
-          <Card chart>
-            <CardHeader color="warning">
-              <ChartistGraph
-                className="ct-chart-white-colors"
-                data={straightLinesChart.data}
-                type="Line"
-                options={straightLinesChart.options}
-                listener={straightLinesChart.animation}
-              />
-            </CardHeader>
-            <CardBody>
-              <h4
-                className={classesCharts.cardTitle}
-                style={{ fontFamily: "sans-serif" }}
-              >
-                Sale made in a month
-              </h4>
-              <p
-                className={classesCharts.cardCategory}
-                style={{ fontFamily: "sans-serif" }}
-              >
-                shows the sale made on OpenSea in particular month
-              </p>
-            </CardBody>
-          </Card>
-        </GridItem>
-        <GridItem xs={12} sm={12} md={6}>
-          <Card chart>
-            <CardHeader color="info">
-              <ChartistGraph
-                className="ct-chart-white-colors"
-                data={simpleBarChart.data}
-                type="Bar"
-                options={simpleBarChart.options}
-                responsiveOptions={simpleBarChart.responsiveOptions}
-                listener={simpleBarChart.animation}
-              />
-            </CardHeader>
-            <CardBody>
-              <h4
-                className={classesCharts.cardTitle}
-                style={{ fontFamily: "sans-serif" }}
-              >
-                Images Collected
-              </h4>
-              <p
-                className={classesCharts.cardCategory}
-                style={{ fontFamily: "sans-serif" }}
-              >
-                shows number of images collected in that week
-              </p>
-            </CardBody>
-          </Card>
-        </GridItem>
-      </GridContainer>
-      <GridContainer>
-        <GridItem xs={12} sm={12} md={6}>
+        <GridItem xs={12} sm={12} md={7}>
           <Card>
             <CardHeader color="info" icon>
               <CardIcon color="info">
@@ -374,45 +284,59 @@ export default function Dashboard() {
                 className={classesCharts.cardIconTitle}
                 style={{ fontFamily: "sans-serif" }}
               >
-                Sale made in a year{" "}
-                <small>- distribution on monthly basis</small>
+                Sale made this month{" "}
+                <small>- distribution on weekly basis</small>
               </h4>
             </CardHeader>
             <CardBody>
-              <ChartistGraph
-                data={colouredLineChart.data}
-                type="Line"
-                options={colouredLineChart.options}
-                listener={colouredLineChart.animation}
-              />
+              <ThemeProvider theme={theme}>
+                <ResponsiveContainer width="100%" aspect={1.55}>
+                  <LineChart 
+                    data={saleData}
+                    width={500}
+                    height={300}
+                    margin={{top: 5, right: 30, left: 20, bottom: 5 }}>
+                    <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
+                    <XAxis 
+                      dataKey="name" 
+                      interval={'preserveStartEnd'} 
+                      margin={{bottom: 30}}
+                      tick={{stroke: 'black', strokeWidth: 0.5}} >
+                      <Label 
+                        value="Weeks" 
+                        position="insideBottom"
+                        offset={-5}
+                        fontFamily="Roboto Slab"
+                      />
+                    </XAxis>
+                    <YAxis tick={{stroke: 'black', strokeWidth: 0.5}} label={{ value: 'Revenue Generated', angle: -90, position: 'insideLeft', fontFamily:"Roboto Slab", marginBottom: "10px"}} />
+                    <Tooltip 
+                      contentStyle={{ border:"1px solid #CCCCCC", borderRadius:"5px"}}
+                      labelStyle={{fontSize:"17px", fontWeight:"bold"}} 
+                      itemStyle={{fontSize:"15px"}} />
+                    <Legend 
+                      verticalAlign="top"
+                      align="right" 
+                      iconType="circle"
+                      height={30}
+                      wrapperStyle={{
+                        fontFamily:"sans-serif", 
+                        position: "relative", 
+                        bottom: "325px",
+                        left: "50px"}} 
+                    />
+                    <Line 
+                      dataKey="RevenueGenerated" 
+                      stroke="#60B764" 
+                      strokeWidth={4}
+                      dot={{ fill: '#60B764', stroke: '#60B764', strokeWidth: 4 }} 
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
+              </ThemeProvider>
             </CardBody>
           </Card>
         </GridItem>
-        <GridItem xs={12} sm={12} md={6}>
-          <Card>
-            <CardHeader color="rose" icon>
-              <CardIcon color="rose">
-                <Timeline />
-              </CardIcon>
-              <h4
-                className={classesCharts.cardIconTitle}
-                style={{ fontFamily: "sans-serif" }}
-              >
-                Images Collected in a year <small>- on monthly basis</small>
-              </h4>
-            </CardHeader>
-            <CardBody>
-              <ChartistGraph
-                data={multipleBarsChart.data}
-                type="Bar"
-                options={multipleBarsChart.options}
-                listener={multipleBarsChart.animation}
-              />
-            </CardBody>
-          </Card>
-        </GridItem>
-      </GridContainer>
-      <GridContainer>
         <GridItem xs={12} sm={12} md={5}>
           <Card>
             <CardHeader color="danger" icon>
@@ -453,6 +377,179 @@ export default function Dashboard() {
             </CardFooter>
           </Card>
         </GridItem>
+      </GridContainer>
+      <GridContainer>
+        <GridItem xs={12} sm={12} md={12}>
+          <Card>
+            <CardHeader color="info" icon>
+              <CardIcon color="info">
+                <Timeline />
+              </CardIcon>
+              <h4
+                className={classesCharts.cardIconTitle}
+                style={{ fontFamily: "sans-serif" }}
+              >
+                Images Collected{" "}
+                <small>- distribution on monthly basis</small>
+              </h4>
+            </CardHeader>
+            <CardBody>
+              <ThemeProvider theme={theme}>
+                <ResponsiveContainer width="100%" aspect={3}>
+                  <BarChart 
+                    data={lineData}
+                    width={500}
+                    height={300}
+                    margin={{top: 5, right: 30, left: 20, bottom: 5 }}>
+                    <CartesianGrid stroke="#ccc" strokeDasharray="3 3" vertical={false} />
+                    <XAxis 
+                      dataKey="name" 
+                      interval={'preserveStartEnd'} 
+                      margin={{bottom: 30}}
+                      tick={{stroke: 'black', strokeWidth: 0.5}} >
+                      <Label 
+                        value="Months" 
+                        position="insideBottom"
+                        offset={-5}
+                        fontFamily="Roboto Slab"
+                      />
+                    </XAxis>
+                    <YAxis tick={{stroke: 'black', strokeWidth: 0.5}} label={{ value: 'Images Collected', angle: -90, position: 'insideLeft', fontFamily:"Roboto Slab", marginBottom: "10px"}} />
+                    <Tooltip 
+                      contentStyle={{ border:"1px solid #CCCCCC", borderRadius:"5px"}}
+                      labelStyle={{fontSize:"17px", fontWeight:"bold"}} 
+                      itemStyle={{fontSize:"15px"}} />
+                    <Legend 
+                      verticalAlign="top"
+                      align="right" 
+                      iconType="circle"
+                      height={30}
+                      wrapperStyle={{
+                        fontFamily:"sans-serif", 
+                        position: "relative", 
+                        bottom: "358px",
+                        left: "50px"}} 
+                    />
+                    <Bar 
+                      dataKey="UploadedImages" 
+                      fill="#00BCD4"
+                    />
+                    <Bar 
+                      dataKey="CameraCaptured" 
+                      fill="#F05B4F" 
+                    />
+                    <Bar 
+                      dataKey="TwitterMentions" 
+                      fill="#F4C63D"
+                    />
+                  </BarChart>
+                </ResponsiveContainer>
+              </ThemeProvider>
+            </CardBody>
+          </Card>
+        </GridItem>
+      </GridContainer>
+      <GridContainer>
+        <GridItem xs={12} sm={12} md={12}>
+          <Card>
+            <CardHeader color="info" icon>
+              <CardIcon color="info">
+                <Timeline />
+              </CardIcon>
+              <h4
+                className={classesCharts.cardIconTitle}
+                style={{ fontFamily: "sans-serif" }}
+              >
+                Sale made in a year{" "}
+                <small>- distribution on monthly basis</small>
+              </h4>
+            </CardHeader>
+            <CardBody>
+              <ThemeProvider theme={theme}>
+                <ResponsiveContainer width="100%" aspect={3}>
+                  <LineChart 
+                    data={lineData}
+                    width={500}
+                    height={300}
+                    margin={{top: 5, right: 30, left: 20, bottom: 5 }}>
+                    <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
+                    <XAxis 
+                      dataKey="name" 
+                      interval={'preserveStartEnd'} 
+                      margin={{bottom: 30}}
+                      tick={{stroke: 'black', strokeWidth: 0.5}} >
+                      <Label 
+                        value="Months" 
+                        position="insideBottom"
+                        offset={-5}
+                        fontFamily="Roboto Slab"
+                      />
+                    </XAxis>
+                    <YAxis tick={{stroke: 'black', strokeWidth: 0.5}} label={{ value: 'Revenue Generated', angle: -90, position: 'insideLeft', fontFamily:"Roboto Slab", marginBottom: "10px"}} />
+                    <Tooltip 
+                      contentStyle={{ border:"1px solid #CCCCCC", borderRadius:"5px"}}
+                      labelStyle={{fontSize:"17px", fontWeight:"bold"}} 
+                      itemStyle={{fontSize:"15px"}} />
+                    <Legend 
+                      verticalAlign="top"
+                      align="right" 
+                      iconType="circle"
+                      height={30}
+                      wrapperStyle={{
+                        fontFamily:"sans-serif", 
+                        position: "relative", 
+                        bottom: "358px",
+                        left: "50px"}} 
+                    />
+                    <Line 
+                      dataKey="UploadedImages" 
+                      stroke="#60B764" 
+                      strokeWidth={4}
+                      dot={{ fill: '#60B764', stroke: '#60B764', strokeWidth: 4 }} 
+                    />
+                    {/* <Line 
+                      dataKey="CameraCaptured" 
+                      stroke="#F05B4F" 
+                      strokeWidth={4}
+                      dot={{ fill: '#F05B4F', stroke: '#F05B4F', strokeWidth: 4 }} 
+                    />
+                    <Line 
+                      dataKey="TwitterMentions" 
+                      stroke="#F4C63D" 
+                      strokeWidth={4}
+                      dot={{ fill: '#F4C63D', stroke: '#F4C63D', strokeWidth: 4 }} 
+                    /> */}
+                  </LineChart>
+                </ResponsiveContainer>
+              </ThemeProvider>
+            </CardBody>
+          </Card>
+        </GridItem>
+        {/* <GridItem xs={12} sm={12} md={12}>
+          <Card>
+            <CardHeader color="rose" icon>
+              <CardIcon color="rose">
+                <Timeline />
+              </CardIcon>
+              <h4
+                className={classesCharts.cardIconTitle}
+                style={{ fontFamily: "sans-serif" }}
+              >
+                Images Collected in a year <small>- on monthly basis</small>
+              </h4>
+            </CardHeader>
+            <CardBody>
+              <ChartistGraph
+                data={multipleBarsChart.data}
+                type="Bar"
+                options={multipleBarsChart.options}
+                listener={multipleBarsChart.animation}
+              />
+            </CardBody>
+          </Card>
+        </GridItem> */}
+      </GridContainer>
+      {/* <GridContainer>
         <GridItem xs={12} sm={12} md={7}>
           <Card>
             <CardHeader color="warning" icon>
@@ -477,7 +574,7 @@ export default function Dashboard() {
             </CardBody>
           </Card>
         </GridItem>
-      </GridContainer>
+      </GridContainer> */}
       <h3 style={{ fontFamily: "sans-serif" }}>In-Demand Artwork</h3>
       <br />
       <GridContainer>
@@ -698,3 +795,144 @@ export default function Dashboard() {
     </div>
   );
 }
+
+{/* <GridContainer>
+        <GridItem xs={12} sm={12} md={4}>
+          <Card chart className={classes.cardHover}>
+            <CardHeader color="info" className={classes.cardHeaderHover}>
+              <ChartistGraph
+                className="ct-chart-white-colors"
+                data={dailySalesChart.data}
+                type="Line"
+                options={dailySalesChart.options}
+                listener={dailySalesChart.animation}
+              />
+            </CardHeader>
+            <CardBody>
+              <div className={classes.cardHoverUnder}>
+                <Tooltip
+                  id="tooltip-top"
+                  title="Refresh"
+                  placement="bottom"
+                  classes={{ tooltip: classes.tooltip }}
+                >
+                  <Button simple color="info" justIcon>
+                    <Refresh className={classes.underChartIcons} />
+                  </Button>
+                </Tooltip>
+                <Tooltip
+                  id="tooltip-top"
+                  title="Change Date"
+                  placement="bottom"
+                  classes={{ tooltip: classes.tooltip }}
+                >
+                  <Button color="transparent" simple justIcon>
+                    <Edit className={classes.underChartIcons} />
+                  </Button>
+                </Tooltip>
+              </div>
+              <h4 className={classes.cardTitle}>Daily Sales</h4>
+              <p className={classes.cardCategory}>
+                <span className={classes.successText}>
+                  <ArrowUpward className={classes.upArrowCardCategory} /> 55%
+                </span>{" "}
+                increase in today sales.
+              </p>
+            </CardBody>
+            <CardFooter chart>
+              <div className={classes.stats}>
+                <AccessTime /> updated 4 minutes ago
+              </div>
+            </CardFooter>
+          </Card>
+        </GridItem>
+        <GridItem xs={12} sm={12} md={4}>
+          <Card chart className={classes.cardHover}>
+            <CardHeader color="warning" className={classes.cardHeaderHover}>
+              <ChartistGraph
+                className="ct-chart-white-colors"
+                data={emailsSubscriptionChart.data}
+                type="Bar"
+                options={emailsSubscriptionChart.options}
+                responsiveOptions={emailsSubscriptionChart.responsiveOptions}
+                listener={emailsSubscriptionChart.animation}
+              />
+            </CardHeader>
+            <CardBody>
+              <div className={classes.cardHoverUnder}>
+                <Tooltip
+                  id="tooltip-top"
+                  title="Refresh"
+                  placement="bottom"
+                  classes={{ tooltip: classes.tooltip }}
+                >
+                  <Button simple color="info" justIcon>
+                    <Refresh className={classes.underChartIcons} />
+                  </Button>
+                </Tooltip>
+                <Tooltip
+                  id="tooltip-top"
+                  title="Change Date"
+                  placement="bottom"
+                  classes={{ tooltip: classes.tooltip }}
+                >
+                  <Button color="transparent" simple justIcon>
+                    <Edit className={classes.underChartIcons} />
+                  </Button>
+                </Tooltip>
+              </div>
+              <h4 className={classes.cardTitle}>Email Subscriptions</h4>
+              <p className={classes.cardCategory}>Last Campaign Performance</p>
+            </CardBody>
+            <CardFooter chart>
+              <div className={classes.stats}>
+                <AccessTime /> campaign sent 2 days ago
+              </div>
+            </CardFooter>
+          </Card>
+        </GridItem>
+        <GridItem xs={12} sm={12} md={4}>
+          <Card chart className={classes.cardHover}>
+            <CardHeader color="danger" className={classes.cardHeaderHover}>
+              <ChartistGraph
+                className="ct-chart-white-colors"
+                data={completedTasksChart.data}
+                type="Line"
+                options={completedTasksChart.options}
+                listener={completedTasksChart.animation}
+              />
+            </CardHeader>
+            <CardBody>
+              <div className={classes.cardHoverUnder}>
+                <Tooltip
+                  id="tooltip-top"
+                  title="Refresh"
+                  placement="bottom"
+                  classes={{ tooltip: classes.tooltip }}
+                >
+                  <Button simple color="info" justIcon>
+                    <Refresh className={classes.underChartIcons} />
+                  </Button>
+                </Tooltip>
+                <Tooltip
+                  id="tooltip-top"
+                  title="Change Date"
+                  placement="bottom"
+                  classes={{ tooltip: classes.tooltip }}
+                >
+                  <Button color="transparent" simple justIcon>
+                    <Edit className={classes.underChartIcons} />
+                  </Button>
+                </Tooltip>
+              </div>
+              <h4 className={classes.cardTitle}>Completed Tasks</h4>
+              <p className={classes.cardCategory}>Last Campaign Performance</p>
+            </CardBody>
+            <CardFooter chart>
+              <div className={classes.stats}>
+                <AccessTime /> campaign sent 2 days ago
+              </div>
+            </CardFooter>
+          </Card>
+        </GridItem>
+      </GridContainer> */}
