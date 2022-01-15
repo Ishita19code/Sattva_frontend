@@ -66,15 +66,7 @@ var dashRoutes = [
     icon: WidgetsIcon,
     state: "pageCollapse",
     views: [
-      {
-        path: "/all-images",
-        name: "All Images",
-        rtlName: "عالتسعير",
-        icon: Image,
-        rtlMini: "ع",
-        component: AllImages,
-        layout: "/admin",
-      },
+
       {
         path: "/uploads",
         name: "Uploaded Image",
@@ -113,11 +105,20 @@ var dashRoutes = [
       },
       {
         path: "/approval-pending",
-        name: "Approval Pending",
+        name: "Approved Images",
         rtlName: "ملف تعريفي للمستخدم",
         mini: "AP",
         rtlMini: "شع",
         component: ApprovalPending,
+        layout: "/admin",
+      },
+      {
+        path: "/all-images",
+        name: "NST Generated Images",
+        rtlName: "عالتسعير",
+        icon: Image,
+        rtlMini: "ع",
+        component: AllImages,
         layout: "/admin",
       },
       // {
