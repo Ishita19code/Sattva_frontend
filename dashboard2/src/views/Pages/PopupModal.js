@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     width:"fit-content",
     height:"fit-content",
     maxHeight:"80vh",
-    maxWidth:"80vw",
+    maxWidth:"70vw",
     position: 'absolute', 
     left: '50%', 
     top: '50%',

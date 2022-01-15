@@ -51,7 +51,7 @@ export default function TwitterImages() {
                   View
                 </Button>
               )}  
-              <PopupModal open={open} setOpen={setOpen} image={Image1}/>
+              <PopupModal open={open} setOpen={setOpen} image={Image3}/>
             </Card>
             <Card 
               className="cardContent"
@@ -66,13 +66,22 @@ export default function TwitterImages() {
                   View
                 </Button>
               )}  
-              <PopupModal open={open} setOpen={setOpen} image={Image1}/>
+              <PopupModal open={open} setOpen={setOpen} image={Image3}/>
+            </Card>
+            <Card>
+              <img src={Image2} alt="..." />
+            </Card>
+            <Card>
+              <img src={Image3} alt="..." />
             </Card>
             <Card>
               <img src={Image4} alt="..." />
             </Card>
             <Card>  
-            <img src={Image1} alt="..."/>
+            <img src={Image5} alt="..."/>
+            </Card>
+            <Card>
+              <img src={Image6} alt="..." />
             </Card>
           </div>
     </div>
