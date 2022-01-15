@@ -113,7 +113,7 @@ var dashRoutes = [
       },
       {
         path: "/approval-pending",
-        name: "Approval Pending",
+        name: "Approved Pending",
         rtlName: "ملف تعريفي للمستخدم",
         mini: "AP",
         rtlMini: "شع",

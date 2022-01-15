@@ -10,6 +10,10 @@ import Icon from "@material-ui/core/Icon";
 // import DateRange from "@material-ui/icons/DateRange";
 import LocalOffer from "@material-ui/icons/LocalOffer";
 import Update from "@material-ui/icons/Update";
+import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+import UploadIcon from '@mui/icons-material/Upload';
+import SellIcon from '@mui/icons-material/Sell';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 // import ArrowUpward from "@material-ui/icons/ArrowUpward";
 // import AccessTime from "@material-ui/icons/AccessTime";
 import Refresh from "@material-ui/icons/Refresh";
@@ -197,7 +201,9 @@ export default function Dashboard() {
           <Card>
             <CardHeader color="info" stats icon>
               <CardIcon color="info">
-                <Icon style={{ paddingLeft: "10px" }}> upload_icon </Icon>
+                <Icon>
+                  <AddPhotoAlternateIcon style={{fontSize: 50}}/>
+                </Icon>
               </CardIcon>
               <p className={classes.cardCategory}>Total GANs images created</p>
               <h3 className={classes.cardTitle}>1.1K</h3>
@@ -219,7 +225,9 @@ export default function Dashboard() {
             <CardHeader color="info" stats icon>
               <CardIcon color="info">
                 {/* <i className="fab fa-twitter" /> */}
-                <Icon style={{ paddingLeft: "10px" }}> upload_icon </Icon>
+                <Icon>
+                  <UploadIcon />
+                </Icon>
               </CardIcon>
               <p className={classes.cardCategory}>
                 Total images uploaded to OpenSea
@@ -238,7 +246,9 @@ export default function Dashboard() {
           <Card>
             <CardHeader color="info" stats icon>
               <CardIcon color="info">
-                <Icon style={{ paddingLeft: "10px" }}>camera_alt_rounded</Icon>
+                <Icon>
+                  <SellIcon />
+                </Icon>
               </CardIcon>
               <p className={classes.cardCategory}>
                 Number of images sold on OpenSea
@@ -255,9 +265,11 @@ export default function Dashboard() {
         </GridItem>
         <GridItem xs={12} sm={6} md={6} lg={3}>
           <Card>
-            <CardHeader color="success" stats icon>
-              <CardIcon color="success">
-                <Icon>local_atm</Icon>
+            <CardHeader color="info" stats icon>
+              <CardIcon color="info">
+                <Icon fontSize="large">
+                  <AttachMoneyIcon />
+                </Icon>
               </CardIcon>
               <p className={classes.cardCategory}>
                 Revenue Generated on OpenSea
@@ -276,8 +288,8 @@ export default function Dashboard() {
       <GridContainer>
         <GridItem xs={12} sm={12} md={7}>
           <Card>
-            <CardHeader color="info" icon>
-              <CardIcon color="info">
+            <CardHeader color="danger" icon>
+              <CardIcon color="danger">
                 <Timeline />
               </CardIcon>
               <h4
@@ -381,8 +393,8 @@ export default function Dashboard() {
       <GridContainer>
         <GridItem xs={12} sm={12} md={12}>
           <Card>
-            <CardHeader color="info" icon>
-              <CardIcon color="info">
+            <CardHeader color="danger" icon>
+              <CardIcon color="danger">
                 <Timeline />
               </CardIcon>
               <h4
@@ -452,8 +464,8 @@ export default function Dashboard() {
       <GridContainer>
         <GridItem xs={12} sm={12} md={12}>
           <Card>
-            <CardHeader color="info" icon>
-              <CardIcon color="info">
+            <CardHeader color="danger" icon>
+              <CardIcon color="danger">
                 <Timeline />
               </CardIcon>
               <h4
@@ -507,18 +519,6 @@ export default function Dashboard() {
                       strokeWidth={4}
                       dot={{ fill: '#60B764', stroke: '#60B764', strokeWidth: 4 }} 
                     />
-                    {/* <Line 
-                      dataKey="CameraCaptured" 
-                      stroke="#F05B4F" 
-                      strokeWidth={4}
-                      dot={{ fill: '#F05B4F', stroke: '#F05B4F', strokeWidth: 4 }} 
-                    />
-                    <Line 
-                      dataKey="TwitterMentions" 
-                      stroke="#F4C63D" 
-                      strokeWidth={4}
-                      dot={{ fill: '#F4C63D', stroke: '#F4C63D', strokeWidth: 4 }} 
-                    /> */}
                   </LineChart>
                 </ResponsiveContainer>
               </ThemeProvider>
