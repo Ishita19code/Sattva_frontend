@@ -14,19 +14,8 @@ import UploadFile from "views/Upload/Upload.js";
 // import LoginPage from "views/Pages/LoginPage.js";
 // import Notifications from "views/Components/Notifications.js";
 // import Panels from "views/Components/Panels.js";
-import AllImages from "views/Pages/AllImages.js";
+import NSTGenerated from "views/Pages/NSTGenerated.js";
 import UploadedImage from "views/Pages/UploadedImage.js";
-// import ReactTables from "views/Tables/ReactTables.js";
-// import RegisterPage from "views/Pages/RegisterPage.js";
-// import RegularForms from "views/Forms/RegularForms.js";
-// import RegularTables from "views/Tables/RegularTables.js";
-// import SweetAlert from "views/Components/SweetAlert.js";
-// import Typography from "views/Components/Typography.js";
-// import UserProfile from "views/Pages/UserProfile.js";
-// import ValidationForms from "views/Forms/ValidationForms.js";
-// import VectorMap from "views/Maps/VectorMap.js";
-// import Widgets from "views/Widgets/Widgets.js";
-// import Wizard from "views/Forms/Wizard.js";
 
 // @material-ui/icons
 // import Apps from "@material-ui/icons/Apps";
@@ -40,7 +29,7 @@ import WidgetsIcon from "@material-ui/icons/Widgets";
 import TwitterImages from "views/Pages/TwitterImages.js";
 import AICaptured from "views/Pages/AICaptured.js";
 import RejectedImages from "views/Pages/RejectedImages.js";
-import ApprovalPending from "views/Pages/ApprovalPending";
+import ApprovedImages from "views/Pages/ApprovedImages.js";
 
 var dashRoutes = [
   {
@@ -66,13 +55,23 @@ var dashRoutes = [
     icon: WidgetsIcon,
     state: "pageCollapse",
     views: [
+
       {
-        path: "/all-images",
-        name: "All Images",
-        rtlName: "عالتسعير",
-        icon: Image,
-        rtlMini: "ع",
-        component: AllImages,
+        path: "/twitter-images",
+        name: "Twitter Images",
+        rtlName: "تيالجدول الزمني",
+        mini: "TI",
+        rtlMini: "تي",
+        component: TwitterImages,
+        layout: "/admin",
+      },
+      {
+        path: "/ai-camera-image",
+        name: "Camera Captured",
+        rtlName: "هعذاتسجيل الدخول",
+        mini: "AI",
+        rtlMini: "هعذا",
+        component: AICaptured,
         layout: "/admin",
       },
       {
@@ -85,21 +84,21 @@ var dashRoutes = [
         layout: "/admin",
       },
       {
-        path: "/twitter-images",
-        name: "Twitter Images",
-        rtlName: "تيالجدول الزمني",
-        mini: "TI",
-        rtlMini: "تي",
-        component: TwitterImages,
+        path: "/approved-images",
+        name: "Approved Images",
+        rtlName: "ملف تعريفي للمستخدم",
+        mini: "AP",
+        rtlMini: "شع",
+        component: ApprovedImages,
         layout: "/admin",
       },
       {
-        path: "/ai-camera-image",
-        name: "AI Camera Captured",
-        rtlName: "هعذاتسجيل الدخول",
-        mini: "AI",
-        rtlMini: "هعذا",
-        component: AICaptured,
+        path: "/NST-Generated",
+        name: "NST Generated Images",
+        rtlName: "عالتسعير",
+        mini: "NST",
+        rtlMini: "ع",
+        component: NSTGenerated,
         layout: "/admin",
       },
       {
@@ -110,16 +109,7 @@ var dashRoutes = [
         rtlMini: "صع",
         component: RejectedImages,
         layout: "/admin",
-      },
-      {
-        path: "/approval-pending",
-        name: "Approved Pending",
-        rtlName: "ملف تعريفي للمستخدم",
-        mini: "AP",
-        rtlMini: "شع",
-        component: ApprovalPending,
-        layout: "/admin",
-      },
+      },      
       // {
       //   path: "/user-page",
       //   name: "User Profile",

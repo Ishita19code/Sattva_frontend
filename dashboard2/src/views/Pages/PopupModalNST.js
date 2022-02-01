@@ -123,7 +123,7 @@ const PopupModal = React.forwardRef(function PopupModal(props, ref) {
                 endIcon={<SendIcon />}
                 fullWidth
               >
-                Generate NST
+                MINT
               </Button>
               <Button 
                 color="danger"
@@ -146,7 +146,7 @@ const PopupModal = React.forwardRef(function PopupModal(props, ref) {
           </GridItem>
         </GridContainer>
       </Modal>
-      <Stack spacing={4} sx={{ width: '100%' }}>
+      {/* <Stack spacing={4} sx={{ width: '100%' }}>
         <Snackbar
           open={createAlert} 
           autoHideDuration={3000} 
@@ -168,7 +168,7 @@ const PopupModal = React.forwardRef(function PopupModal(props, ref) {
             Picture has been deleted.
           </Alert>
         </Snackbar>
-      </Stack>
+      </Stack> */}
     </div>
   );
 });

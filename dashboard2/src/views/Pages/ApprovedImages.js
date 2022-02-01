@@ -21,7 +21,7 @@ import Image4 from "assets/img/ex1.jpg";
 import Image5 from "assets/img/exwidth.jpg";
 import Image6 from "assets/img/sidebar-1.jpg";
 
-export default function AICaptured() {
+export default function ApprovedImages() {
   const [ishover, setIsHover] = useState(false); 
   const [open, setOpen] = useState(false);
 
@@ -29,10 +29,10 @@ export default function AICaptured() {
     <div>
       <Heading
         textAlign="center"
-        title="Camera Captured"
+        title="Approved Images"
         category={
           <span>
-            Displays all the images captured by the camera installed in the park.<br /> 
+            Displays all the images that can be turned into NFT's.<br /> 
           </span>
         }
       />

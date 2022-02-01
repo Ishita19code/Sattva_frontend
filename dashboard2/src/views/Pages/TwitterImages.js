@@ -56,8 +56,7 @@ export default function TwitterImages() {
         title="Twitter Images"
         category={
           <span>
-            Displays all the images posted on <b>Twitter</b> under the hashtag <b>#SattvaNFT</b><br />
-            <small>Includes images which are rejected or in pending also.</small> 
+            Displays all the images posted on <b>Twitter</b> under <b>#SattvaNFT</b><br />
           </span>
         }
       />
@@ -80,15 +79,22 @@ export default function TwitterImages() {
           </Card>
           
           ))}</div> */}
-      <div className="cardImage">
-        <ImageList cols={4}>
+      {/* <div className="cardImage"> */}
+        <ImageList cols={4} rowHeight={200}>
           {tweetData.map((item) => (
             <ImageListItem key={item._id["$oid"]} className="cardContent">
               <img
+                width = "250px"
+                height = "200px"
                 src={item.media_url}
-                // srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                // src = {`${item.media_url}?w=248&fit=crop&auto=format`}
+                // srcSet={`${item.media_url}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
                 alt={item.title}
                 loading="lazy"
+                maxHeight= '200px'
+              
+
+
               />
               <ImageListItemBar
                 
@@ -96,7 +102,7 @@ export default function TwitterImages() {
                 actionIcon={
                   <Tooltip title="info" placement="top-start">
                     <IconButton
-                      onClick = {()=> {
+                      onClick = {()=>{
                         setOpen(true),
                         setImageUrl(item.media_url),
                         setCreatedAt(item.created_at),
@@ -116,7 +122,7 @@ export default function TwitterImages() {
           ))}
         </ImageList>
         <PopupModal open={open} setOpen={setOpen} image={imageUrl} createdAt ={createdAt} userName ={userName} tweetId ={tweetId}/>
-      </div>
+      {/* </div> */}
     </div>
   );
 }
