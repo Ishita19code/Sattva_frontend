@@ -20,12 +20,15 @@ import TextField from "@mui/material/TextField";
 // const ariaLabel = { "aria-label": "description" };
 
 import styles from "assets/jss/material-dashboard-pro-react/views/chartsStyle.js";
+import { isNonNullChain } from "typescript";
 
 const useStyles = makeStyles(styles);
 
 export default function Charts() {
   // const [value, setValue] = useState(""); //for text field
   const [image, setImage] = useState({ preview: "", raw: "" });
+  const [name, setName] = useState("")
+  const [description, setDescription] = useState("")
   const classes = useStyles();
 
   const handleChange = (e) => {
@@ -37,25 +40,51 @@ export default function Charts() {
     }
   };
 
+  const handleNameChange = (e) =>{
+
+    setName(e.target.value)
+  }
+
+  const handleDescriptionChange = (e) =>{
+
+    setDescription(e.target.value)
+  }
+
   //for text field
   // const handleTextChange = (event) => {
   //   setValue(event.target.value);
   // };
 
-  //For IMAGES
-  // const handleUpload = async e => {
-  //   e.preventDefault();
-  //   const formData = new FormData();
-  //   formData.append("image", image.raw);
+  // For IMAGES
+  const handleUpload = async (image, name , description) => {
+    // e.preventDefault();
+    console.log(image.raw)
+    console.log(typeof(name.length))
 
-  //   await fetch("YOUR_URL", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "multipart/form-data"
-  //     },
-  //     body: formData
-  //   });
-  // };
+    if((name.length != 0)&&(image.raw !== "")){
+      const formData = new FormData();
+      formData.append("image", image.raw, name);
+      formData.append("description", description);
+      await fetch("/upload", {
+        method: "POST",
+        // headers: {
+        //   "Content-Type": "form-data"
+        // },
+        body: formData
+      }).then((res)=>{
+        window.alert("File uploaded !!")
+      });
+    }
+    else{
+      if(image.raw == ""){
+        window.alert("Please Select a image for upload")
+      }
+      else{
+        window.alert("Please select a name for image")
+      }
+    }
+
+  };
 
   return (
     <div>
@@ -114,6 +143,7 @@ export default function Charts() {
                   id="upload-button"
                   style={{ display: "none", marginLeft: "45%" }}
                   onChange={handleChange}
+          
                 />
                 <br />
                 <div>
@@ -139,6 +169,7 @@ export default function Charts() {
                           type="text"
                           size="small"
                           fullWidth
+                          onChange = {handleNameChange}
                         />
                       </div>
                       <div style={{ margin: "10px" }}>
@@ -149,6 +180,7 @@ export default function Charts() {
                           rows={2}
                           type="text"
                           fullWidth
+                          onChange = {handleDescriptionChange}
                         />
                       </div>
                     </Box>
@@ -161,7 +193,7 @@ export default function Charts() {
                       margin: "10px",
                     }}
                   >
-                    <Button color="github" style={{ fontSize: "13px" }}>
+                    <Button color="github" style={{ fontSize: "13px" }} onClick ={() =>handleUpload(image, name,description)}>
                       Upload
                     </Button>
                   </div>

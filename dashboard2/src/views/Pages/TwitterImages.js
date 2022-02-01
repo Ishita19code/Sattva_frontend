@@ -48,7 +48,7 @@ export default function TwitterImages() {
     .then(result => {
       setTweetData(JSON.parse(result))
     })
-  },[])
+  },[tweetData])
   return (
     <div>
       <Heading

@@ -290,7 +290,7 @@ export default function Dashboard() {
             </CardHeader>
             <CardBody>
               <ThemeProvider theme={theme}>
-                <ResponsiveContainer width="100%" aspect={1.55}>
+                <ResponsiveContainer width="100%" aspect={2}>
                   <LineChart 
                     data={saleData}
                     width={500}
@@ -322,7 +322,7 @@ export default function Dashboard() {
                       wrapperStyle={{
                         fontFamily:"sans-serif", 
                         position: "relative", 
-                        bottom: "325px",
+                        bottom: "380px",
                         left: "50px"}} 
                     />
                     <Line 
@@ -350,7 +350,7 @@ export default function Dashboard() {
                 Total images collected
               </h4>
             </CardHeader>
-            <CardBody style={{ height: "230px" }}>
+            <CardBody style={{ height: "240px" }}>
               <ChartistGraph
                 data={pieChart.data}
                 type="Pie"
@@ -427,7 +427,7 @@ export default function Dashboard() {
                       wrapperStyle={{
                         fontFamily:"sans-serif", 
                         position: "relative", 
-                        bottom: "358px",
+                        bottom: "440px",
                         left: "50px"}} 
                     />
                     <Bar 
@@ -498,7 +498,7 @@ export default function Dashboard() {
                       wrapperStyle={{
                         fontFamily:"sans-serif", 
                         position: "relative", 
-                        bottom: "358px",
+                        bottom: "440px",
                         left: "50px"}} 
                     />
                     <Line 
