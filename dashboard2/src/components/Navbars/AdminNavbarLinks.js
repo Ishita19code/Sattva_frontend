@@ -20,6 +20,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Person from "@material-ui/icons/Person";
 import Notifications from "@material-ui/icons/Notifications";
 import Dashboard from "@material-ui/icons/Dashboard";
+import LanguageIcon from '@mui/icons-material/Language';
 // import WebIcon from "@mui/icons-material/Web";
 // import Search from "@material-ui/icons/Search";
 
@@ -28,8 +29,9 @@ import Dashboard from "@material-ui/icons/Dashboard";
 import Button from "components/CustomButtons/Button.js";
 
 import styles from "assets/jss/material-dashboard-pro-react/components/adminNavbarLinksStyle.js";
+import { Language } from "@material-ui/icons";
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles(styles); 
 
 export default function HeaderLinks(props) {
   const [openNotification, setOpenNotification] = React.useState(null);
@@ -124,7 +126,7 @@ export default function HeaderLinks(props) {
           </span>
         </Hidden>
       </Button> */}
-      <Tooltip
+      {/* <Tooltip
         id="tooltip-top"
         title="Visit OpenSea"
         placement="bottom"
@@ -134,13 +136,61 @@ export default function HeaderLinks(props) {
           color="transparent"
           simple
           justIcon
+          aria-haspopup="true"
           onClick={() =>
             window.open("https://testnets.opensea.io/collection/sattvanft")
           }
         >
-          <Dashboard className={classes.underChartIcons} />
+          <Language className={classes.buttonLink} />
+          <Hidden mdUp implementation="css">
+            <span
+              onClick={() =>
+                window.open("https://testnets.opensea.io/collection/sattvanft")}
+              className={classes.linkText}
+              style={{marginLeft:"20px"}}
+            >
+              {rtlActive ? "إعلام" : "Visit OpenSea"}
+            </span>
+          </Hidden>
         </Button>
-      </Tooltip>
+      </Tooltip> */}
+      <div className={managerClasses}>
+        <Button
+          color="transparent"
+          justIcon
+          aria-label="Visit OpenSea"
+          onClick={() => window.open("https://testnets.opensea.io/collection/sattvanft")}
+          className={rtlActive ? classes.buttonLinkRTL : classes.buttonLink}
+          muiClasses={{
+            label: rtlActive ? classes.labelRTL : "",
+          }}
+        >
+          <Tooltip
+            id="tooltip-top"
+            title="Visit OpenSea"
+            placement="bottom"
+            classes={{ tooltip: classes.tooltip }}
+          >
+          <Language
+            className={
+              classes.headerLinksSvg +
+              " " +
+              (rtlActive
+                ? classes.links + " " + classes.linksRTL
+                : classes.links)
+            }
+          />
+          </Tooltip>
+          <Hidden mdUp implementation="css">
+            <span
+              onClick={() => window.open("https://testnets.opensea.io/collection/sattvanft")}
+              className={classes.linkText}
+            >
+              {rtlActive ? "إعلام" : "Visit OpenSea"}
+            </span>
+          </Hidden>
+        </Button>
+      </div>
       <div className={managerClasses}>
         <Button
           color="transparent"
@@ -246,7 +296,7 @@ export default function HeaderLinks(props) {
         </Popper>
       </div>
 
-      <div className={managerClasses}>
+      {/* <div className={managerClasses}>
         <Button
           color="transparent"
           aria-label="Person"
@@ -320,7 +370,7 @@ export default function HeaderLinks(props) {
             </Grow>
           )}
         </Popper>
-      </div>
+      </div> */}
     </div>
   );
 }

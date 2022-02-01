@@ -21,7 +21,7 @@ import Image4 from "assets/img/ex1.jpg";
 import Image5 from "assets/img/exwidth.jpg";
 import Image6 from "assets/img/sidebar-1.jpg";
 
-export default function TwitterImages() {
+export default function AICaptured() {
   const [ishover, setIsHover] = useState(false); 
   const [open, setOpen] = useState(false);
 
@@ -29,11 +29,10 @@ export default function TwitterImages() {
     <div>
       <Heading
         textAlign="center"
-        title="AI Captured"
+        title="Camera Captured"
         category={
           <span>
-            Displays all the images posted on <b>Twitter</b> under the hashtag <b>#SattvaNFT</b><br />
-            <small>Includes images which are rejected or in pending also.</small> 
+            Displays all the images captured by the camera installed in the park.<br /> 
           </span>
         }
       />
