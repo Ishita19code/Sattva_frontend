@@ -56,8 +56,7 @@ export default function TwitterImages() {
         title="Twitter Images"
         category={
           <span>
-            Displays all the images posted on <b>Twitter</b> under the hashtag <b>#SattvaNFT</b><br />
-            <small>Includes images which are rejected or in pending also.</small> 
+            Displays all the images posted on <b>Twitter</b> under <b>#SattvaNFT</b><br />
           </span>
         }
       />

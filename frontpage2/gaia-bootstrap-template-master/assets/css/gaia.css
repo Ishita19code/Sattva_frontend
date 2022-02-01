@@ -17,6 +17,363 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Andada+Pro&display=swap");
 
+/* Changes */
+
+#sattva_logo {
+  position: absolute;
+  left: 48%;
+  top: -60px;
+  transform: translate(-50%, -50%);
+  width: 60%;
+}
+
+#LoginOnPage {
+  background-color: transparent;
+  font-weight: 600;
+  border: none;
+  color: white;
+  font-family: "Poppins", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  opacity: 0.85;
+  font-size: 13px;
+  margin: 15px 3px;
+  padding: 10px 15px;
+  line-height: 18px;
+}
+
+#LoginOnPage:hover {
+  opacity: 1;
+}
+
+#logo_box {
+  position: relative;
+  top: 405px;
+  margin-top: 7px;
+}
+
+#login-form {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  overflow-y: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.form-box {
+  width: 380px;
+  height: 480px;
+  position: relative;
+  margin: 5% auto;
+  background: white;
+  padding: 20px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.button-box {
+  width: fit-content;
+  margin: 35px auto;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+}
+.toggle-btn {
+  padding: 10px 30px;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  outline: none;
+  position: relative;
+  font-weight: bold;
+  font-family: Avenir, sans-serif;
+}
+#btn {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 110px;
+  height: 100%;
+  background: #499ec7;
+  border-radius: 20px;
+  transition: 0.5s;
+}
+.input-group-login {
+  top: 110px;
+  position: absolute;
+  width: 280px;
+  transition: 0.5s;
+  font-family: Avenir, sans-serif;
+}
+
+.input-group-login .label {
+  font-family: Avenir, sans-serif;
+  margin-top: 20px;
+}
+
+.loginBox .form-control {
+  border: none;
+  border-radius: none;
+  border-bottom: 2px solid black;
+  font-family: Avenir, sans-serif;
+  font-size: 15px;
+}
+
+.loginBox button {
+  background-color: #499ec7;
+  color: rgb(0, 0, 0);
+  position: relative;
+  left: 40%;
+  cursor: pointer;
+}
+
+.loginBox button:hover {
+  background-color: #499ec7;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+
+.loginBox #check1 {
+  font-family: Avenir, sans-serif;
+  font-size: 15px;
+  position: relative;
+  bottom: 45px;
+}
+
+.loginBox #check {
+  font-family: Avenir, sans-serif;
+  font-size: 15px;
+  position: relative;
+  bottom: 45px;
+}
+.input-group-register {
+  top: 120px;
+  position: absolute;
+  width: 280px;
+  transition: 0.5s;
+}
+.input-field {
+  width: 100%;
+  padding: 10px 0;
+  margin: 5px 0;
+  outline: none;
+  background: transparent;
+  border: none;
+  border-radius: none;
+  border-bottom: 2px solid black;
+  font-family: Avenir, sans-serif;
+  font-size: 15px;
+}
+.submit-btn {
+  width: 85%;
+  padding: 10px 30px;
+  cursor: pointer;
+  display: block;
+  margin: auto;
+  background: #f3c693;
+  border: 0;
+  outline: none;
+  border-radius: 30px;
+}
+.check-box {
+  margin: 30px 10px 34px 0;
+}
+span {
+  color: #777;
+  font-size: 12px;
+  bottom: 46px;
+  position: absolute;
+}
+#login {
+  left: 50px;
+}
+#login input {
+  color: white;
+  font-size: 15;
+}
+#register {
+  left: 450px;
+}
+#register input {
+  color: white;
+  font-size: 15;
+}
+
+/* .modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin-left: 32%;
+  margin-top: 8%;
+  display: inline-block;
+  justify-content: center;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 35%;
+}
+
+CSS for login form
+
+.modal {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 80%;
+  margin: 20px; }
+
+.loginBtns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+  margin-bottom: 20px;
+}
+
+.loginBtns button {
+  color: #141414;
+}
+
+.loginBtns button:hover {
+  border: 1px solid #023e5c;
+  background-color: #70adcc;
+  font-weight: bold;
+  color: #141414;
+}
+
+#signInModal {
+  margin: 20px;
+}
+#signUpModal {
+  padding: 20px;
+}
+
+.loginBox .label {
+  font-family: Avenir, sans-serif;
+}
+
+.loginBox .form-control {
+  border: none;
+  border-radius: none;
+  border-bottom: 2px solid black;
+  font-family: Avenir, sans-serif;
+  font-size: 15px;
+}
+
+.loginBox button {
+  background-color: #499ec7;
+  color: rgb(0, 0, 0);
+  position: relative;
+  left: 40%;
+  cursor: pointer;
+}
+
+.loginBox button:hover {
+  background-color: #499ec7;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+
+.loginBox #check1 {
+  font-family: Avenir, sans-serif;
+  font-size: 15px;
+  position: relative;
+  bottom: 45px;
+}
+
+.loginBox #check {
+  font-family: Avenir, sans-serif;
+  font-size: 15px;
+  position: relative;
+  bottom: 45px;
+}
+
+#signUpModal {
+  height: auto;
+}
+
+#formBtn {
+  position: relative;
+  top: 25px;
+  left: 10px;
+  color: black;
+  background-color: #499ec7;
+}
+
+#registerBtn {
+  position: relative;
+  right: 28%;
+  color: #141414;
+} */
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* .name-ip i {
+  position: absolute;
+  top: 34.5%;
+  left: 5.5%;
+  transform: translate(-50%, -50%);
+}
+
+.name-ip .pass-ip label {
+  font-family: "Playfair Display", serif;
+}
+
+.pass-ip i {
+  position: absolute;
+  top: 56%;
+  left: 5.5%;
+  transform: translate(-50%, -50%);
+}
+
+.name-ip .pass-ip input {
+  border: 1px transparent;
+  border-radius: 10px;
+}
+
+.form-control {
+  padding-left: 7%;
+} */
+
+/* #about_us .separator.separator-line {
+  color: #499ec7;
+} */
+
+.iconPics {
+  color: #499ec7;
+  size: 30px;
+  margin-right: 30px;
+}
+
 html {
   font-size: 14px;
   -ms-text-size-adjust: 100%;
@@ -3973,193 +4330,4 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-}
-
-/* Changes */
-
-#sattva_logo {
-  position: absolute;
-  left: 48%;
-  top: -60px;
-  transform: translate(-50%, -50%);
-  width: 60%;
-}
-
-#logo_box {
-  position: relative;
-  top: 405px;
-  margin-top: 7px;
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow-y: hidden;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-.modal-content {
-  background-color: #fefefe;
-  margin-left: 32%;
-  margin-top: 8%;
-  display: inline-block;
-  justify-content: center;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 35%;
-}
-
-/*CSS for login form*/
-
-/* .modal {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  position: fixed; 
-  z-index: 1; 
-  left: 0;
-  top: 0;
-  width: 80%;
-  margin: 20px; }*/
-
-.loginBtns {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 8px;
-  margin-bottom: 20px;
-}
-
-.loginBtns button {
-  color: #141414;
-}
-
-.loginBtns button:hover {
-  border: 1px solid #023e5c;
-  background-color: #70adcc;
-  font-weight: bold;
-  color: #141414;
-}
-
-#signInModal {
-  margin: 20px;
-}
-/* #signUpModal {
-  padding: 20px;
-} */
-
-.loginBox .label {
-  font-family: Avenir, sans-serif;
-}
-
-.loginBox .form-control {
-  border: none;
-  border-radius: none;
-  border-bottom: 2px solid black;
-  font-family: Avenir, sans-serif;
-  font-size: 15px;
-}
-
-.loginBox button {
-  background-color: #499ec7;
-  color: rgb(0, 0, 0);
-  /* position: relative;
-  left: 40%; */
-  cursor: pointer;
-}
-
-.loginBox button:hover {
-  background-color: #499ec7;
-  color: rgb(0, 0, 0);
-  cursor: pointer;
-}
-
-.loginBox #check1 {
-  font-family: Avenir, sans-serif;
-  font-size: 15px;
-  position: relative;
-  bottom: 45px;
-}
-
-.loginBox #check {
-  font-family: Avenir, sans-serif;
-  font-size: 15px;
-  position: relative;
-  bottom: 45px;
-}
-
-#signUpModal {
-  height: auto;
-}
-
-#formBtn {
-  position: relative;
-  top: 25px;
-  left: 10px;
-  color: black;
-  background-color: #499ec7;
-}
-
-#registerBtn {
-  position: relative;
-  right: 28%;
-  color: #141414;
-}
-
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.name-ip i {
-  position: absolute;
-  top: 34.5%;
-  left: 5.5%;
-  transform: translate(-50%, -50%);
-}
-
-.name-ip .pass-ip label {
-  font-family: "Playfair Display", serif;
-}
-
-.pass-ip i {
-  position: absolute;
-  top: 56%;
-  left: 5.5%;
-  transform: translate(-50%, -50%);
-}
-
-.name-ip .pass-ip input {
-  border: 1px transparent;
-  border-radius: 10px;
-}
-
-.form-control {
-  padding-left: 7%;
-}
-
-/* #about_us .separator.separator-line {
-  color: #499ec7;
-} */
-
-.iconPics {
-  color: #499ec7;
-  size: 30px;
-  margin-right: 30px;
 }

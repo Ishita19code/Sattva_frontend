@@ -12,7 +12,7 @@ import Button from "components/CustomButtons/Button.js";
 import Card from "components/Card/CardTwitterImages";
 
 import "./TwitterImages.css";
-import PopupModal from "./PopupModal";
+import PopupModal from "./PopupModalNST";
 
 import Image1 from "assets/sattvaimg/1.png";
 import Image2 from "assets/sattvaimg/2.png";
@@ -21,7 +21,7 @@ import Image4 from "assets/img/ex1.jpg";
 import Image5 from "assets/img/exwidth.jpg";
 import Image6 from "assets/img/sidebar-1.jpg";
 
-export default function AICaptured() {
+export default function NSTGenerated() {
   const [ishover, setIsHover] = useState(false); 
   const [open, setOpen] = useState(false);
 
@@ -29,10 +29,11 @@ export default function AICaptured() {
     <div>
       <Heading
         textAlign="center"
-        title="Camera Captured"
+        title="AI Captured"
         category={
           <span>
-            Displays all the images captured by the camera installed in the park.<br /> 
+            Displays all the images posted on <b>Twitter</b> under the hashtag <b>#SattvaNFT</b><br />
+            <small>Includes images which are rejected or in pending also.</small> 
           </span>
         }
       />
