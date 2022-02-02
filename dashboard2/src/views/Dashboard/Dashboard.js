@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React from "react";
+import React, { useEffect } from "react";
 
 // @material-ui/core components
 import { makeStyles, ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
@@ -84,6 +84,7 @@ const useStyles = makeStyles(styles);
 const useStylesCharts = makeStyles(stylesChart);
 
 const useStylesArtwork = makeStyles((theme) => ({
+
   container:{
     maxWidth:"1000px",
     maxHeight:"300px",
@@ -202,6 +203,18 @@ const saleData = [
 
 
 export default function Dashboard() {
+  useEffect(()=>{
+    const options = {
+      method: 'GET',
+      headers: {Accept: 'application/json', 'X-API-KEY': '7488cd0607df40db8b0f4e3f6534946b'}
+    };
+    
+    fetch('https://testnets-api.opensea.io/api/v1/events?account_address=0x8d4853afA22F9766EfB91307708184Cf40033419&only_opensea=false&offset=0&limit=20', options)
+      .then(response => response.json())
+      .then(response => console.log(response))
+      .catch(err => console.error(err));
+
+  },[])
   const classes = useStyles();
   const classesCharts = useStylesCharts();
   const classesArtwork = useStylesArtwork();
