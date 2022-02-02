@@ -106,15 +106,12 @@ const PopupModal = React.forwardRef(function PopupModal(props, ref) {
           {/* <GridItem md={0.1} className={classes.verticalLine}>
           </GridItem> */}
           <GridItem xs={12} sm={6} md={5} className={classes.rightside}>
-            <h3 style={{fontFamily:"sans-serif", color:"white"}}>{userName}</h3>
+            <h3 style={{fontFamily:"sans-serif", color:"white"}}>username: {userName}</h3>
             <p style={{fontFamily:"monospace"}}>
-              source : 
+              source: 
             </p>
             <p style={{fontFamily:"monospace"}}>
               posted on : {createdAt}
-            </p>
-            <p style={{fontFamily:"monospace"}}>
-              style name : 
             </p>
             <div className={classes.rightButtons}>
               <Button
@@ -126,7 +123,7 @@ const PopupModal = React.forwardRef(function PopupModal(props, ref) {
                 endIcon={<SendIcon />}
                 fullWidth
               >
-                MINT
+                Approve the Image
               </Button>
               <Button 
                 color="danger"

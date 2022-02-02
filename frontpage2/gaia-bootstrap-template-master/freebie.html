@@ -1,21 +1,3 @@
-<!--
-
-=========================================================
-* Gaia Bootstrap Template - v1.0.1 
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/gaia-bootstrap-template
-* Licensed under MIT (https://github.com/creativetimofficial/gaia-bootstrap-template/blob/master/LICENSE.md)
-* Copyright 2019 Creative Tim (http://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
--->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -87,26 +69,28 @@
 
             <div id='login-form'class='login-page'>
                 <div class="form-box">
-                    <span class="close">&times;</span>
                     <div class='button-box'>
                         <div id='btn'></div>
                         <button type='button'onclick='login()'class='toggle-btn'>Log In</button>
-                        <button type='button'onclick='register()'class='toggle-btn'>Register</button>
+                        <button type='button'onclick='register()'class='toggle-btn-reg'>Register</button>
                     </div>
                     <form id='login' class='input-group-login'>
-                        <label for="userName">Username</label>
+                        <label for="userName" class="usernameLabel">Username</label>
                         <input type='text'class='input-field'placeholder="Your Username" name="userName" required>
-                        <label for="passWord">Password</label>
+                        <label for="passWord" class="passwordLabel">Password</label>
                         <input type='password'class='input-field'placeholder="Your Password" name="password" required>
                         <input type='checkbox'class='check-box'><span>Remember Password</span>
                         <button type='submit'class='submit-btn'>Log in</button>
                     </form>
                     <form id='register' class='input-group-register'>
-                        <input type='text'class='input-field'placeholder='First Name' required>
-                        <input type='text'class='input-field'placeholder='Last Name ' required>
-                        <input type='email'class='input-field'placeholder='Email Id' required>
-                        <input type='password'class='input-field'placeholder='Enter Password' required>
-                        <input type='password'class='input-field'placeholder='Confirm Password'  required>
+                        <label for="userName" class="usernameLabel">Username</label>
+                        <input class="input-field" placeholder="What should we call you?" name="userName" type="text" required/>
+                        <label for="email" class="passwordLabel">Email</label>
+                        <input class="input-field" placeholder="Just to stay in touch" name="email" type="email" required/>
+                        <label for="passWord" class="passwordLabel">Password</label>
+                        <input class="input-field" placeholder="To keep your profile safe" name="password" type="password" />
+                        <label for="ConfirmpassWord" class="passwordLabel">Password</label>
+                        <input type='password'class='input-field'placeholder='Confirm Password' name="ConfirmpassWord" required>
                         <input type='checkbox'class='check-box'><span>I agree to the terms and                                                   conditions</span>
                         <button type='submit'class='submit-btn'>Register</button>
                         </form>

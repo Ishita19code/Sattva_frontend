@@ -44,7 +44,7 @@ const ipfsClient = create("https://ipfs.infura.io:5001/api/v0");
 
 const useStyles = makeStyles(styles);
 
-export default function NSTGenerated() {
+export default function NSTGenerated() { 
   const classes = useStyles();
   const [tweetData, setTweetData] = useState([])
   const [open, setOpen] = useState(false);
@@ -193,27 +193,28 @@ export default function NSTGenerated() {
       <Heading
         textAlign="center"
         title="Neural Style Transfer Images"
-        category={
-          <span>
-            Displays all the images generated using Neural Style Transfer Model
-            {/* <small>Includes images which are rejected or in pending also.</small>  */}
-          </span>
-        }
+        // category={
+        //   <span>
+        //     Displays all the images generated using Neural Style Transfer Model
+        //   </span>
+        // }
       />
 
       <Button onClick={(e)=>{
         e.preventDefault();
-        dispatch(connect());
-      }}>Connect</Button>
+        dispatch(connect());}}
+        style={{border:"1px solid black", backgroundColor:"#499ec7", color:"white", position:"absolute", left:"41%", top:"26%", cursor:"pointer"}}>
+          Connect to Polygon
+      </Button>
 
-      <Button onClick={(e)=>{
+      {/* <Button onClick={(e)=>{
         e.preventDefault();
 
-        // await getBase64FromUrl("https://res.cloudinary.com/pawasthi961/image/upload/v1641976788/hunrfylsqfncjgfe5qmp.jpg")
+        await getBase64FromUrl("https://res.cloudinary.com/pawasthi961/image/upload/v1641976788/hunrfylsqfncjgfe5qmp.jpg")
         startMintingProcess()
-        // dispatch(connect());
+        dispatch(connect());
       }}>MINT</Button>
-      {loading ? <p>loading</p> : null}
+      {loading ? <p>loading</p> : null} */}
 
       {/* <div className="cardImage">
         {tweetData.map((item) => (
