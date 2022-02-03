@@ -86,7 +86,7 @@ const useStylesCharts = makeStyles(stylesChart);
 const useStylesArtwork = makeStyles((theme) => ({
 
   container:{
-    maxWidth:"1000px",
+    maxWidth:"1500px",
     maxHeight:"390px",
     display:"flex",
     flexDirection:"row",
@@ -95,7 +95,7 @@ const useStylesArtwork = makeStyles((theme) => ({
   imageCard:{
     border: "1px solid whitesmoke",
     width: "fit-content",
-    maxWidth: "400px",
+    maxWidth: "550px",
     height: "fit-content",
     backgroundColor:"white",
     borderRadius: "3px",
@@ -106,7 +106,7 @@ const useStylesArtwork = makeStyles((theme) => ({
     height:"100%",
     maxHeight:"250px",
     minHeight:"250px",
-    maxWidth:"230px",
+    maxWidth:"310px",
     minWidth:"230px",
     margin:"10px",
     border:"1px solid white",
@@ -608,7 +608,7 @@ export default function Dashboard() {
             target="_blank"
             rel="noreferrer"
           >
-            <img src={Image1} alt="..." className={classesArtwork.images} />
+            <img src="https://lh3.googleusercontent.com/pJL83DNcFkeA7O_T95bkPqzZazj_E1OjIPuroIozSvhLwQPE-kfSHIOJTWphmlKzX1CmSGPamH4WnBP1gPEw3tmmv5FktE2k_GzCDVM=w600" alt="..." className={classesArtwork.images} />
           </a>
           <h4 className={classes.cardProductTitle}>
             <a
@@ -624,45 +624,45 @@ export default function Dashboard() {
         </div>
         <div className={classesArtwork.imageCard}>
           <a
-            href="https://testnets.opensea.io/assets/0x527edca3cb3a5653ee82996e26ed432dbc1856fb/3"
+            href="https://testnets.opensea.io/assets/0xf99b526ee3d969971c6cc734d1ea4c7ed22c51d4/58"
             target="_blank"
             rel="noreferrer"
           >
-            <img src={Image2} alt="..." className={classesArtwork.images} />
+            <img src="https://lh3.googleusercontent.com/C-8DFOIB8GceOSNWXH7YOR1ZTHUC1GCYwK0qw-7mfT0ymHBY9AC8C_TNOZCs63Scg_Tc6lqq4hs9QyUHkaHo_q43e_UCqMuis3pChQ=w600" alt="..." className={classesArtwork.images} />
           </a>
           <h4 className={classes.cardProductTitle}>
             <a
-              href="https://testnets.opensea.io/assets/0x527edca3cb3a5653ee82996e26ed432dbc1856fb/3"
+              href="https://testnets.opensea.io/assets/0xf99b526ee3d969971c6cc734d1ea4c7ed22c51d4/58"
               target="_blank"
               rel="noreferrer"
               style={{fontFamily:"Roboto Slab"}}
             >
-              Name of the Image
+              NFT Name
             </a>
           </h4>
           <h4 className={classes.cardProductDesciprion} style={{fontFamily:"Roboto Slab", color:"black", fontWeight:"bold"}}>Current Price</h4>
         </div>
         <div className={classesArtwork.imageCard}>
           <a
-            href="https://testnets.opensea.io/assets/0x527edca3cb3a5653ee82996e26ed432dbc1856fb/3"
+            href="https://testnets.opensea.io/assets/mumbai/0x22303da2c3fd2b8d6013fb93dfe883497163376e/1"
             target="_blank"
             rel="noreferrer"
           >
-            <img src={Image3} alt="..." className={classesArtwork.images} />
+            <img src="https://lh3.googleusercontent.com/fdAqpejoMVDSfB7WnuJ6H_Wxr3g9mLvO7_E35ze8a0Vn8j8nOJ_Cl4g9ucmTcP6UATVAvFCE92HuK723JJThGSu4AcprXOize4J39g=w600" alt="..." className={classesArtwork.images} />
           </a>
           <h4 className={classes.cardProductTitle}>
             <a
-              href="https://testnets.opensea.io/assets/0x527edca3cb3a5653ee82996e26ed432dbc1856fb/3"
+              href="https://testnets.opensea.io/assets/mumbai/0x22303da2c3fd2b8d6013fb93dfe883497163376e/1"
               target="_blank"
               rel="noreferrer"
               style={{fontFamily:"Roboto Slab"}}
             >
-              Name of the Image
+              Sattva #0001
             </a>
           </h4>
           <h4 className={classes.cardProductDesciprion} style={{fontFamily:"Roboto Slab", color:"black", fontWeight:"bold"}}>Current Price</h4>
         </div>
-        <div className={classesArtwork.imageCard}>
+        {/* <div className={classesArtwork.imageCard}>
           <a
             href="https://testnets.opensea.io/assets/0x527edca3cb3a5653ee82996e26ed432dbc1856fb/3"
             target="_blank"
@@ -721,7 +721,7 @@ export default function Dashboard() {
             </a>
           </h4>
           <h4 className={classes.cardProductDesciprion} style={{fontFamily:"Roboto Slab", color:"black", fontWeight:"bold"}}>Current Price</h4>
-        </div>
+        </div> */}
         {/* <GridContainer>
           <GridItem xs={12} sm={6} md={3}>
             <img src={Image1} alt="..." className={classesArtwork.images}/>

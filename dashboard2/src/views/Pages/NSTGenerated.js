@@ -53,6 +53,7 @@ export default function NSTGenerated() {
   const [userName,setUserName] = useState()
   const [createdAt,setCreatedAt] = useState()
   const [imageData64, setImageData64] = useState(5)
+  const [connection, setConnnection] = useState(false)
 
 
   const dispatch = useDispatch();
@@ -193,19 +194,51 @@ export default function NSTGenerated() {
       <Heading
         textAlign="center"
         title="Neural Style Transfer Images"
-        // category={
-        //   <span>
-        //     Displays all the images generated using Neural Style Transfer Model
-        //   </span>
-        // }
+        category={
+          <span>
+            Displays all the images generated using Neural Style Transfer Model
+          </span>
+        }
       />
 
-      <Button onClick={(e)=>{
+      {connection ? <Button onClick={(e)=>{
         e.preventDefault();
-        dispatch(connect());}}
-        style={{border:"1px solid black", backgroundColor:"#499ec7", color:"white", position:"absolute", left:"41%", top:"26%", cursor:"pointer"}}>
-          Connect to Polygon
-      </Button>
+        dispatch(connect());
+        setConnnection(true)
+      }}
+        style={{border:"1px solid black", 
+        backgroundColor:"green",
+
+        color:"white", 
+        // position:"absolute", 
+        // left:"41%", 
+        // top:"26%", 
+        cursor:"pointer"}}
+        >
+          Connected
+      </Button>:
+
+<Button onClick={(e)=>{
+  e.preventDefault();
+  dispatch(connect());
+  setConnnection(true)
+}}
+  style={{border:"1px solid black", 
+  backgroundColor:"#398FDD" ,
+
+  color:"white", 
+  // position:"absolute", 
+  // left:"41%", 
+  // top:"26%", 
+  cursor:"pointer"}}
+  >
+    Connect To Polygon
+</Button>
+
+      }
+
+
+      {connection ? <span style={{fontFamily:"sans-serif", marginLeft:"10px", fontWeight:"bold", fontSize:"16px"}}>To Account: {window.ethereum.selectedAddress}</span> : null}
 
       {/* <Button onClick={(e)=>{
         e.preventDefault();
@@ -259,10 +292,11 @@ export default function NSTGenerated() {
                   <Tooltip title="info" placement="top-start">
                     <IconButton
                       onClick = {()=>{
+                  
                         setOpen(true),
                         setImageUrl(item.media_url),
                         setCreatedAt(item.created_at),
-                        setTweetId(item.tweet_id),
+                        setTweetId(item.source),
                         setUserName(item.user_handle)
                       }}
 

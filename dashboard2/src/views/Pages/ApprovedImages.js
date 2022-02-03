@@ -57,7 +57,7 @@ export default function ApprovedImages() {
         category={
           <span>
             Displays all the images Approved on <b>Twitter</b> under the hashtag <b>#SattvaNFT</b><br />
-            <small>Includes images which are rejected or in pending also.</small> 
+            <small>Uploaded by Admin and AI Camera.</small> 
           </span>
         }
       />
@@ -107,7 +107,7 @@ export default function ApprovedImages() {
                         setOpen(true),
                         setImageUrl(item.media_url),
                         setCreatedAt(item.created_at),
-                        setTweetId(item.tweet_id),
+                        setTweetId(item.name),
                         setUserName(item.user_handle)
                       }}
 

@@ -1,6 +1,6 @@
 /*eslint-disable*/
 import React from "react";
-import { useState } from "react";
+import { useState ,useEffect,useRef} from "react";
 import PropTypes from "prop-types";
 
 import GridContainer from "components/Grid/GridContainer.js";
@@ -14,9 +14,15 @@ import { Modal } from "@material-ui/core";
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import { Stack } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { connect } from "../../redux/blockchain/blockchainActions";
+import { fetchData } from "../../redux/data/dataActions";
+
+import styled from "styled-components";
+import { create } from "ipfs-http-client";
 
 import { makeStyles } from "@material-ui/core/styles";
-
+const ipfsClient = create("https://ipfs.infura.io:5001/api/v0");
 const useStyles = makeStyles((theme) => ({
   container:{
     backgroundColor:"black",  
@@ -76,7 +82,134 @@ const PopupModal = React.forwardRef(function PopupModal(props, ref) {
   const classes = useStyles();
   const [createAlert, setCreateAlert] = useState(false);
   const [deleteAlert, setDeleteAlert] = useState(false);
-  const {open, setOpen, image ,userName, tweetId, createdAt} = props;
+  const {url ,open, setOpen, image ,userName, tweetId, createdAt} = props;
+  const [imageData64, setImageData64] = useState(5)
+
+
+  const dispatch = useDispatch();
+  const blockchain = useSelector((state) => state.blockchain);
+  // console.log(blockchain);
+  const data = useSelector((state) => state.data);
+  // console.log(data);
+
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState("");
+  const [NFTS, setNFTS] = useState([]);
+
+  const elementRef = useRef();
+  const ipfsBaseUrl = "https://ipfs.infura.io/ipfs/";
+  const name = "Sattva #0002";
+  const description = "Created by Sattva to make nature Sovereign";
+
+  const getBase64FromUrl = async (url) => {
+    const data = await fetch(url);
+    const blob = await data.blob();
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(blob); 
+      reader.onloadend = () => {
+        const base64data = reader.result; 
+        setImageData64(base64data)
+        // console.log(base64data)
+        // console.log(imageData64)
+        resolve(base64data);
+      }
+    });
+  }
+
+  const mint = (_uri) => {
+    blockchain.smartContract.methods
+      .mint(blockchain.account, _uri)
+      .send({ from: blockchain.account })
+      .once("error", (err) => {
+        console.log(err);
+        setLoading(false);
+        setStatus("Error");
+      })
+      .then((receipt) => {
+        console.log(receipt);
+        setLoading(false);
+        setStatus("NFT was minted successfully");
+      })
+  };
+
+  const createMetaDataAndMint = async (_name, _des, _imgbuffer) => {
+    setLoading(true);
+    setStatus("Uploading to IPFS");
+    
+    try {
+      console.log(await _imgbuffer)
+      const addedImage = await ipfsClient.add(await _imgbuffer);
+
+      const metaDataObj = {
+        name: _name,
+        description: _des,
+        image: ipfsBaseUrl + addedImage.path,
+      };
+      const addMetaData = await ipfsClient.add(JSON.stringify(metaDataObj));
+      console.log(ipfsBaseUrl + addMetaData.path);
+      mint(ipfsBaseUrl + addMetaData.path);
+    } catch (err) {
+      console.log(err);
+      setLoading(false);
+      setStatus("Error");
+    }
+  };
+
+  const startMintingProcess = () => {
+    dispatch(connect())
+    createMetaDataAndMint(name, description, getImageData());
+
+
+  };
+
+  const getImageData = async () => {
+    // console.log(elementRef);
+    // console.log(elementRef.current)
+    const url = image
+    const imageData =  await getBase64FromUrl(url);
+    // console.log(imageData)
+    const buffer = Buffer(imageData.split(",")[1], "base64");
+    return buffer;
+
+    // const canvasEl = elementRef.current;
+    // let dataUrl = canvasEl.toDataURL("image/png");
+    
+    // console.log(dataUrl);
+ 
+   
+  };
+
+  const fetchMetatDataForNFTS = () => {
+    setNFTS([]);
+    console.log(data.error);
+    data.allTokens.forEach(nft => {
+      fetch(nft.uri)
+        .then((response) => response.json())
+        .then((metaData) => {
+          setNFTS((prevState) => [
+            ...prevState,
+            { id: nft.id, metaData: metaData },
+          ]);
+        
+        
+        });
+    });
+  };
+
+  
+
+
+
+  useEffect(() => {
+    if (blockchain.account !== "" && blockchain.smartContract !== null) {
+      dispatch(fetchData(blockchain.account));
+    }
+  }, [blockchain.smartContract, dispatch]);
+
+  useEffect(() => {
+    fetchMetatDataForNFTS();
+  }, [data.allTokens]);
 
   const handleCreateClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -108,19 +241,18 @@ const PopupModal = React.forwardRef(function PopupModal(props, ref) {
           <GridItem xs={12} sm={6} md={5} className={classes.rightside}>
             <h3 style={{fontFamily:"sans-serif", color:"white"}}>{userName}</h3>
             <p style={{fontFamily:"monospace"}}>
-              source : 
+              source : {tweetId}
             </p>
             <p style={{fontFamily:"monospace"}}>
               posted on : {createdAt}
             </p>
             <p style={{fontFamily:"monospace"}}>
-              style name : 
+              style name : color
             </p>
             <div className={classes.rightButtons}>
               <Button
                 onClick={() => {
-                    setOpen(false),
-                    setCreateAlert(true)
+                    startMintingProcess()
                     console.log(image.height)}}
                 color="success"
                 endIcon={<SendIcon />}
